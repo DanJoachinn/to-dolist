@@ -46,7 +46,8 @@
         <div class="row">
           <div class="col-sm-6">
             <h1>Agrega una tarea.</h1>
-            <input type="text" class="form-control" v-model="newKeep" v-on:keyup.enter="addKeep">
+            <input id="Input" type="text" class="form-control">
+            <button type="button" name="button" class="btn btn-sm btn-success"  v-model="newKeep" v-on:keyup.enter="addKeep">Añadir tarea</button>
             <h1>O sube un archivo</h1>
             <input type="hidden" role="uploadcare-uploader" name="content" data-public-key="79e4ce8b4b5a809f1ce9" class="form-control" v-model="newKeep" v-on:keyup.enter="addKeep">
 
