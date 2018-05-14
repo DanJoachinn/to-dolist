@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+    <script charset="utf-8" src="https://ucarecdn.com/libs/widget/3.3.0/uploadcare.full.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.5.1/auth0.min.js"></script>
+
+    <script>
+      var config = {
+       apiKey: "AIzaSyBVTHbtDiAii0bs0vPOKmV7rF9SWjOri7c",
+       authDomain: "to-do-list-d6bfb.firebaseapp.com",
+       databaseURL: "https://to-do-list-d6bfb.firebaseio.com",
+       projectId: "to-do-list-d6bfb",
+       storageBucket: "to-do-list-d6bfb.appspot.com",
+       messagingSenderId: "814873330486"
+      };
+     firebase.initializeApp(config);
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">To-do List</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Log in</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+
+    </div>
+    <div id="appVue">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1>Agrega una tarea.</h1>
+            <input type="text" class="form-control" v-model="newKeep" v-on:keyup.enter="addKeep">
+            <h1>O sube un archivo</h1>
+            <input type="hidden" role="uploadcare-uploader" name="content" data-public-key="79e4ce8b4b5a809f1ce9" class="form-control" v-model="newKeep" v-on:keyup.enter="addKeep">
+
+          </div>
+          <div class="col-sm-6">
+            <h1>Cosas por hacer: </h1>
+            <ul class="list-group">
+              <li class="list-group-item"
+                  v-for="item in lists"
+                  v-bind:class="item.completed == true ? 'disabled' : ''">
+                  {{ item.keep }}
+                  <button align="left" type="button" name="button" class="btn btn-sm btn-success" @click="item.completed = ! item.completed">Tarea Hecha</button>
+              </li>
+              <hr>
+              <button align="left" type="button" name="button" class="btn btn-sm btn-danger" v-on:click="remover">Quitar Ultimo</button>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
