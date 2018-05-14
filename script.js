@@ -15,5 +15,11 @@ new Vue({
     remover: function(){
       this.lists.pop();
     },
+    submit: function(){
+
+      window.alert("working");
+
+    }
+
  }
 });
